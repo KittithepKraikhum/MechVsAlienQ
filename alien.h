@@ -3,7 +3,7 @@
 #ifndef ALIEN_H
 #define ALIEN_H
 
-#include "raylib.h"
+#include <raylib.h>
 #include "player.h"
 
 //FSM States

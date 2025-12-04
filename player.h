@@ -3,7 +3,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include "raylib.h" //I need raylib features in this file
+#include <raylib.h> //I need raylib features in this file
 
 //FSM States
 typedef enum {

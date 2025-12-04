@@ -1,6 +1,6 @@
 //main.c
 
-#include "raylib.h"
+#include <raylib.h>
 #include "player.h"
 #include "alien.h"
 
@@ -24,9 +24,15 @@ int main(void)
 	BeginDrawing();
 	ClearBackground(RAYWHITE); //color the entire screen to white
 
+	//DRAW HERE
+	DrawText("Player HP:",20,20,20 BLACK);	
+	DrawText("Alien HP ",20,60,20 BLACK);
+
 	EndDrawing();
 
 	}
 
+
+CloseWindow();
 return 0;
 }//end main
