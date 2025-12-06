@@ -43,13 +43,20 @@ int main(void)
 
 			//will do the shield later
 
-			if (IsKeyPressed(KEY_M))
+			 else if (IsKeyPressed(KEY_M))
 			{
 				alien.health -= 25; //more damage than normal attack
 				player.health -= 10; //player also get some damage
 
 				currentTurn = TURN_ALIEN;
 			}
+		}
+
+		else if (currentTurn == TURN_ALIEN)
+		{
+			player.health -= 10; //damge to player
+
+			currentTurn = TURN_PLAYER;
 		}
 
 
