@@ -90,8 +90,19 @@ int main(void)
 		}
 	}
 
+	//Display whose turn on the screen
+	if (currentTurn == TURN_PLAYER)
+	{
+		DrawText("PLAYER TURN", 100,100,40,BLACK);
+	}
+
+	else if (currentTurn == TURN_ALIEN)
+	{
+		DrawText("ALIEN TURN", 100,100,40,BLACK);
+	}
 
 
+	//Hp lebel
 	DrawText("Player HP:",20,20,20, BLACK);	
 	DrawText("Alien HP ",20,60,20, BLACK);
 
