@@ -4,6 +4,13 @@
 #include "player.h"
 #include "alien.h"
 
+//creates two possible turn
+typedef enum { 
+	TURN_PLAYER,
+	TURN_ALIEN
+} Turn;
+
+
 int main(void)
 {
 	//create window
@@ -12,6 +19,9 @@ int main(void)
 	//Declare player and alien
 	Player player;
 	Alien alien;
+
+	//current turn the game starts with player's turn
+	Turn currentTurn = TURN_PLAYER;
 
 	//Initialize Player and Alien
 	InitPlayer(&player);
