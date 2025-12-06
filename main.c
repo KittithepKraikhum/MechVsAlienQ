@@ -83,13 +83,28 @@ int main(void)
 		{
 			DrawText("ALIEN WINS!", 100,100,40,RED); //text,x,y,fontSize, color
 		}
+
+		else
+		{
+			DrawText("PLAYER WINS!", 100, 100, 40, RED); //text,x,y,fontSize, color
+		}
+
 	}
 
-	else
+	//show player or enemy turn
+	if (currentTurn == TURN_PLAYER)
 	{
-		DrawText("PLAYER WINS!", 100, 100, 40, RED); //text,x,y,fontSize, color
+		DrawText("PLAYER TURN", 100,20,20, BLUE); //text,x,y,fontSize, color
+
 	}
 
+	else if (currentTurn == TURN_ALIEN)
+	{
+		DrawText("ALIEN TURN", 100, 20, 20, BLUE); //text,x,y,fontSize, color
+	}
+
+
+	//hp lebel
 	DrawText("Player HP:",20,20,20, BLACK);	
 	DrawText("Alien HP ",20,60,20, BLACK);
 
