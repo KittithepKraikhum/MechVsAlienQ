@@ -83,12 +83,14 @@ int main(void)
 		{
 			DrawText("ALIEN WINS!", 100,100,40,RED); //text,x,y,fontSize, color
 		}
+
+		else
+		{
+			DrawText("PLAYER WINS!", 100, 100, 40, RED); //text,x,y,fontSize, color
+		}
 	}
 
-	else
-	{
-		DrawText("PLAYER WINS!", 100, 100, 40, RED); //text,x,y,fontSize, color
-	}
+
 
 	DrawText("Player HP:",20,20,20, BLACK);	
 	DrawText("Alien HP ",20,60,20, BLACK);
