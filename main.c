@@ -59,7 +59,16 @@ int main(void)
 			currentTurn = TURN_PLAYER;
 		}
 
+		//check for game over screen
+		if (player.health <= 0)
+		{
+			currentTurn = -1; // game over state
+		}
 
+		if (alien.health <= 0)
+		{
+			currentTurn = -1;
+		}
 
 	//drawing code
 	BeginDrawing();
@@ -67,6 +76,20 @@ int main(void)
 
 
 	//DRAW HERE
+
+	if (currentTurn == -1) //game over
+	{
+		if (player.health <= 0)
+		{
+			DrawText("ALIEN WINS!", 100,100,40,RED); //text,x,y,fontSize, color
+		}
+	}
+
+	else
+	{
+		DrawText("PLAYER WINS!", 100, 100, 40, RED); //text,x,y,fontSize, color
+	}
+
 	DrawText("Player HP:",20,20,20, BLACK);	
 	DrawText("Alien HP ",20,60,20, BLACK);
 
