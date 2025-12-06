@@ -25,8 +25,8 @@ int main(void)
 	ClearBackground(RAYWHITE); //color the entire screen to white
 
 	//DRAW HERE
-	DrawText("Player HP:",20,20,20 BLACK);	
-	DrawText("Alien HP ",20,60,20 BLACK);
+	DrawText("Player HP:",20,20,20, BLACK);	
+	DrawText("Alien HP ",20,60,20, BLACK);
 
 	EndDrawing();
 
