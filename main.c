@@ -30,9 +30,34 @@ int main(void)
 	//Game loop
 	while (!WindowShouldClose())
 	{
+
+		if (currentTurn == TURN_PLAYER)
+		{
+
+			//S for attack
+			if (IsKeyPressed(KEY_S))
+			{
+				alien.health -= 10;			//damage to alien
+				currentTurn = TURN_ALIEN;  //switch to alien turn
+			}
+
+			//will do the shield later
+
+			if (IsKeyPressed(KEY_M))
+			{
+				alien.health -= 25; //more damage than normal attack
+				player.health -= 10; //player also get some damage
+
+				currentTurn = TURN_ALIEN;
+			}
+		}
+
+
+
 	//drawing code
 	BeginDrawing();
 	ClearBackground(RAYWHITE); //color the entire screen to white
+
 
 	//DRAW HERE
 	DrawText("Player HP:",20,20,20, BLACK);	
