@@ -101,10 +101,12 @@ int main(void)
 		DrawText("ALIEN TURN", 100,100,40,BLACK);
 	}
 
-
 	//Hp lebel
-	DrawText("Player HP:",20,20,20, BLACK);	
-	DrawText("Alien HP ",20,60,20, BLACK);
+	if (currentTurn != -1) //show player hp when not on gameover screen
+	{
+		DrawText("Player HP:", 20, 20, 20, BLACK);
+		DrawText("Alien HP ", 20, 60, 20, BLACK);
+	}
 
 	EndDrawing();
 
