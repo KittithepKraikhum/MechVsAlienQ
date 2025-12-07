@@ -93,19 +93,22 @@ int main(void)
 	//Display whose turn on the screen
 	if (currentTurn == TURN_PLAYER)
 	{
-		DrawText("PLAYER TURN", 100,100,40,BLACK);
+		DrawText("PLAYER TURN", 200,200,40,BLACK);
 	}
 
 	else if (currentTurn == TURN_ALIEN)
 	{
-		DrawText("ALIEN TURN", 100,100,40,BLACK);
+		DrawText("ALIEN TURN", 200,200,40,BLACK);
 	}
 
 	//Hp lebel
 	if (currentTurn != -1) //show player hp when not on gameover screen
 	{
 		DrawText("Player HP:", 20, 20, 20, BLACK);
-		DrawText("Alien HP ", 20, 60, 20, BLACK);
+		DrawText("Alien HP: ", 20, 60, 20, BLACK);
+
+		DrawText(TextFormat("%d", player.health), 140, 20, 20, BLACK);
+		DrawText(TextFormat("%d", alien.health), 140,60,20, BLACK);
 	}
 
 	EndDrawing();
