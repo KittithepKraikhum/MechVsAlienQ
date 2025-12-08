@@ -11,6 +11,8 @@ typedef enum {
 } Turn;
 
 
+bool alienAttack = false;
+
 int main(void)
 {
 	//create window
@@ -30,35 +32,6 @@ int main(void)
 	//Game loop
 	while (!WindowShouldClose())
 	{
-
-		if (currentTurn == TURN_PLAYER)
-		{
-
-			//S for attack
-			if (IsKeyPressed(KEY_S))
-			{
-				alien.health -= 10;			//damage to alien
-				currentTurn = TURN_ALIEN;  //switch to alien turn
-			}
-
-			//will do the shield later
-
-			 else if (IsKeyPressed(KEY_M))
-			{
-				alien.health -= 25; //more damage than normal attack
-				player.health -= 10; //player also get some damage
-
-				currentTurn = TURN_ALIEN;
-			}
-		}
-
-		else if (currentTurn == TURN_ALIEN)
-		{
-			player.health -= 10; //damge to player
-
-			currentTurn = TURN_PLAYER;
-		}
-
 		//check for game over screen
 		if (player.health <= 0)
 		{
@@ -68,6 +41,48 @@ int main(void)
 		if (alien.health <= 0)
 		{
 			currentTurn = -1;
+		}
+
+		if (currentTurn != -1)
+		{
+			if (currentTurn == TURN_PLAYER)
+			{
+
+				//S for attack
+				if (IsKeyPressed(KEY_S))
+				{
+					alien.health -= 10;			//damage to alien
+					currentTurn = TURN_ALIEN;  //switch to alien turn
+					alienAttack = true; //switch turn
+					continue;
+
+				}
+
+				//will do the shield later
+
+				else if (IsKeyPressed(KEY_M))
+				{
+					alien.health -= 25; //more damage than normal attack
+					player.health -= 10; //player also get some damage
+					alienAttack = true;
+					currentTurn = TURN_ALIEN;
+					continue;
+				}
+			}
+
+			else if (currentTurn == TURN_ALIEN)  //***** Here
+			{
+				if (alienAttack == true)
+				{
+					if (IsKeyPressed(KEY_F))
+					{
+						player.health -= 10; //damage to player
+						alienAttack = false;
+						currentTurn = TURN_PLAYER;
+					}
+				}
+			}
+
 		}
 
 	//drawing code
@@ -109,11 +124,14 @@ int main(void)
 
 		DrawText(TextFormat("%d", player.health), 140, 20, 20, BLACK);
 		DrawText(TextFormat("%d", alien.health), 140,60,20, BLACK);
+		//raylib can't draw number. only string
+		//so we need to  use TextFormat to converts the number into text
 	}
 
 	EndDrawing();
 
-	}
+
+	}//end while
 
 
 CloseWindow();
