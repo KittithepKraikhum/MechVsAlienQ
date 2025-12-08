@@ -52,6 +52,7 @@ int main(void)
 				if (IsKeyPressed(KEY_S))
 				{
 					alien.health -= 10;			//damage to alien
+					player.pos.x += 20;			//move
 					currentTurn = TURN_ALIEN;  //switch to alien turn
 					alienAttack = true; //switch turn
 					continue;
@@ -63,6 +64,7 @@ int main(void)
 				else if (IsKeyPressed(KEY_M))
 				{
 					alien.health -= 25; //more damage than normal attack
+					player.pos.x += 20;	//move
 					player.health -= 10; //player also get some damage
 					alienAttack = true;
 					currentTurn = TURN_ALIEN;
@@ -77,6 +79,7 @@ int main(void)
 					if (IsKeyPressed(KEY_F))
 					{
 						player.health -= 10; //damage to player
+						alien.pos.x -= 20;	//move
 						alienAttack = false;
 						currentTurn = TURN_PLAYER;
 					}
@@ -126,7 +129,15 @@ int main(void)
 		DrawText(TextFormat("%d", alien.health), 140,60,20, BLACK);
 		//raylib can't draw number. only string
 		//so we need to  use TextFormat to converts the number into text
+
+
+		//Draw sprite
+		DrawRectangle((int)player.pos.x, (int)player.pos.y,80,80, BLUE);
+
+		DrawRectangle((int)alien.pos.x, (int)alien.pos.y, 80, 80, RED);
+
 	}
+
 
 	EndDrawing();
 
