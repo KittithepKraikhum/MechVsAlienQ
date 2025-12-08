@@ -12,6 +12,7 @@ typedef enum {
 
 
 bool alienAttack = false;
+bool playerShield = false;
 
 int main(void)
 {
@@ -60,6 +61,14 @@ int main(void)
 				}
 
 				//will do the shield later
+				else if (IsKeyPressed(KEY_D))
+				{
+					playerShield = true;     // activate shield
+					currentTurn = TURN_ALIEN;
+					alienAttack = true;
+					// No damage dealt, just shielding
+					continue;
+				}
 
 				else if (IsKeyPressed(KEY_M))
 				{
@@ -78,7 +87,15 @@ int main(void)
 				{
 					if (IsKeyPressed(KEY_F))
 					{
-						player.health -= 10; //damage to player
+						if (playerShield == true)
+						{
+							player.health -= 2; // shield reduces damage a lot 
+							playerShield = false; // shield used up
+						}
+						else
+						{
+							player.health -= 10; // normal damage
+						}
 						alien.pos.x -= 20;	//move
 						alienAttack = false;
 						currentTurn = TURN_PLAYER;
